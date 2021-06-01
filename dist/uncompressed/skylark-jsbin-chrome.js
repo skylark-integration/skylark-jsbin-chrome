@@ -130,13 +130,14 @@ define('skylark-jsbin-chrome/dropdowns',[
 ],function ($,jsbin,chrome,analytics) {
   //moved from chrome/navigation.js
 
-  var dropdownOpen = false,
+  var 
+      //dropdownOpen = false,
       onhover = false,
       menuDown = false;
 
   function opendropdown(el, nofocus) {
     var menu;
-    if (!dropdownOpen) {
+    if (!jsbin.dropdownOpen) {
       menu = $(el).closest('.menu').addClass('open').trigger('open');
       // $body.addClass('menuinfo');
       analytics.openMenu(el.hash.substring(1));
@@ -148,16 +149,16 @@ define('skylark-jsbin-chrome/dropdowns',[
           input[0].select();
         }, 0);
       }
-      dropdownOpen = el;
+      jsbin.dropdownOpen = el;
     }
   }
 
   function closedropdown() {
     menuDown = false;
-    if (dropdownOpen) {
+    if (jsbin.dropdownOpen) {
       dropdownButtons.closest('.menu').removeClass('open').trigger('close');
       // $body.removeClass('menuinfo');
-      dropdownOpen = false;
+      jsbin.dropdownOpen = false;
       onhover = false;
       var f = jsbin.panels.focused; // TODO
       if (f && !jsbin.mobile) {
@@ -171,10 +172,10 @@ define('skylark-jsbin-chrome/dropdowns',[
 
   var dropdownButtons = $('.button-dropdown, .button-open').mousedown(function (e) {
     $dropdownLinks.removeClass('hover');
-    if (dropdownOpen && dropdownOpen !== this) {
+    if (jsbin.dropdownOpen && jsbin.dropdownOpen !== this) {
       closedropdown();
     }
-    if (!dropdownOpen) {
+    if (!jsbin.dropdownOpen) {
       menuDown = true;
       opendropdown(this);
     }
@@ -200,18 +201,18 @@ define('skylark-jsbin-chrome/dropdowns',[
   });
 
   $('#actionmenu').click(function () {
-    dropdownOpen = true;
+    jsbin.dropdownOpen = true;
   });
 
   var ignoreUp = false;
   jsbin.$body.bind('mousedown', function (event) {
-    if (dropdownOpen) {
+    if (jsbin.dropdownOpen) {
       if ($(event.target).closest('.menu').length) {
         ignoreUp = true;
       }
     }
   }).bind('click mouseup', function (event) {
-    if (dropdownOpen && !ignoreUp) {
+    if (jsbin.dropdownOpen && !ignoreUp) {
       if (!$(event.target).closest('.menu').length) {
         closedropdown();
         return false;
