@@ -1,0 +1,9 @@
+/**
+ * skylark-jsbin-chrome - A version of jsbin-chrome  that ported to running on skylarkjs.
+ * @author Hudaokeji, Inc.
+ * @version v0.9.0
+ * @link https://github.com/skylark-integration/skylark-jsbin-chrome/
+ * @license MIT
+ */
+define(["skylark-jquery","./jsbin","./chrome","./analytics"],function(e,t,n,o){var s=!1,i=!1;function r(n,i){var r;if(!s){r=e(n).closest(".menu").addClass("open").trigger("open"),o.openMenu(n.hash.substring(1));var u=r.find(":text:visible:first");u.length&&!t.mobile&&(u.focus(),setTimeout(function(){u[0].select()},0)),s=n}}function u(){if(i=!1,s){a.closest(".menu").removeClass("open").trigger("close"),s=!1,!1;var e=t.panels.focused;e&&!t.mobile&&(e.focus(),e.editor&&e.editor.focus())}}var a=e(".button-dropdown, .button-open").mousedown(function(e){return d.removeClass("hover"),s&&s!==this&&u(),s||(i=!0,r(this)),e.preventDefault(),!1}).mouseup(function(){if(i)return!1}).click(function(){return i||(o.closeMenu(this.hash.substring(1)),u()),i?(e(this.hash).attr("tabindex",0),i=!1,t.mobile):(i=!1,e(this.hash).attr("tabindex",-1),!1)});e("#actionmenu").click(function(){s=!0});var c=!1;t.$body.bind("mousedown",function(t){s&&e(t.target).closest(".menu").length&&(c=!0)}).bind("click mouseup",function(t){if(s&&!c&&!e(t.target).closest(".menu").length)return u(),!1;c=!1});var h=!1,d=e(".dropdownmenu a, .dropdownmenu .button").mouseup(function(t){"INPUT"!==t.target.nodeName&&(setTimeout(u,0),o.selectMenu(this.getAttribute("data-label")||this.hash.substring(1)||this.href),h||(this.hostname===window.location.hostname?!1!==e(this).triggerHandler("click")&&(window.location=this.href):this.getAttribute("target")?window.open(this.href):window.location=this.href),h=!1)}).mouseover(function(){d.removeClass("hover"),e(this).addClass("hover")}).mousedown(function(e){"INPUT"!==e.target.nodeName&&(h=!0)});return n.dropdowns={opendropdown:r,closedropdown:u}});
+//# sourceMappingURL=sourcemaps/dropdowns.js.map

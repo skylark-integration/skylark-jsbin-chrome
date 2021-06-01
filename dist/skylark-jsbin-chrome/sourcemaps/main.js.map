@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":["define","chrome"],"mappings":";;;;;;;AAAAA,QACC,WACA,cACA,cACA,cACC,SAASC,GACV,OAAOA","file":"../main.js","sourcesContent":["define([\r\n\t\"./chrome\",\r\n\t\"./analytics\",\r\n\t\"./dropdowns\",\r\n\t\"./hideOpen\"\r\n],function(chrome){\r\n\treturn chrome;\r\n})"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["chrome.js"],"names":["define","jsbin","chrome"],"mappings":";;;;;;;AAAAA,QACC,WACC,SAASC,GACV,OAAOA,EAAMC","file":"../chrome.js","sourcesContent":["define([\r\n\t\"./jsbin\"\r\n],function(jsbin){\r\n\treturn jsbin.chrome = {};\r\n});"]}

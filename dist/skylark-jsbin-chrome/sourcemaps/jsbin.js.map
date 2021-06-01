@@ -1,0 +1,1 @@
+{"version":3,"sources":["jsbin.js"],"names":["define","jsbin"],"mappings":";;;;;;;AAAAA,QACC,4BACC,SAASC,GACV,OAAOA","file":"../jsbin.js","sourcesContent":["define([\r\n\t\"skylark-jsbin-base/jsbin\"\r\n],function(jsbin){\r\n\treturn jsbin;\r\n});"]}
